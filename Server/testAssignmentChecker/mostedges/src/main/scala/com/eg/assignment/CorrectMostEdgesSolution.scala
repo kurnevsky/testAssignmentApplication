@@ -1,13 +1,13 @@
 package com.eg.assignment
 
-object CorrectMostEdgesSolution extends MostEdges {
+object CorrectMostEdgesSolution {
   def edgeCount(graph: Set[Edge], vertex: Vertex): Int = {
     graph count { edge =>
       edge.from == vertex || edge.to == vertex
     }
   }
 
-  override def findVertexWithMostEdges(graph: Set[Edge]): Option[Vertex] = {
+  def findVertexWithMostEdges(graph: Set[Edge]): Option[Vertex] = {
     def add(map: Map[Vertex, Int], vertex: Vertex): Map[Vertex, Int] = {
       map + (vertex -> (map.getOrElse(vertex, 0) + 1))
     }
