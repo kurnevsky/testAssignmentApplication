@@ -1,6 +1,6 @@
 organization := "com.evolutiongaming"
 
-name := "shortestpath"
+name := "mostedges"
 
 version := "0.1"
 
