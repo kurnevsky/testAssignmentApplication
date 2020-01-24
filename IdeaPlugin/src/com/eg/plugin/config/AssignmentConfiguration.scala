@@ -37,6 +37,26 @@ object AssignmentConfiguration {
       """.stripMargin
       ),
       sbtCommand = ";project root;reload;compile;scalafix;assembly"
+    ),
+    Configuration(
+      description = AssignmentDescription(
+        "mostedges",
+        "Most edges",
+        """
+          |Find the vertex in the graph with the highest total count of incoming and outgoing edges.
+          |
+          |Assume the following classes are provided:
+          |
+          |package com.evolutiongaming.conferences.graph
+          |
+          |case class Vertex(id: String) extends AnyVal
+          |case class Edge(from: Vertex, to: Vertex)
+          |
+          |
+          |The solution will be graded on test cases with vertex counts up to 1,000 and edge counts up to 999,000 and the total execution time of 10 test cases of various size constrained to 100 seconds.
+      """.stripMargin
+      ),
+      sbtCommand = ";project root;reload;compile;scalafix;assembly"
     )
   )
 

@@ -48,6 +48,24 @@ trait DockerAssignmentsInitialization extends ServerInitialization {
         1 second,
       )
     ),
+    "mostedges" -> new DockerAssignmentChecker(
+      "mostedges_assignment_checker",
+      "result.json",
+      Seq(
+        5 seconds,
+        2 second,
+        2 second,
+        1 second,
+        5 seconds,
+        2 second,
+        2 second,
+        1 second,
+        5 seconds,
+        2 second,
+        2 second,
+        1 second,
+      )
+    ),
   )
 
   DockerHelper

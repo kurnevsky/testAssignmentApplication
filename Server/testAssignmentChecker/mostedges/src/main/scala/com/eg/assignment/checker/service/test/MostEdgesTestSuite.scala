@@ -6,17 +6,16 @@ import com.eg.assignment.common.model.result.{TestResult, TestSuiteResult}
 
 class MostEdgesTestSuite(val instance: MostEdges) extends TestSuite[MostEdges] {
 
-  def gradeOne(solution: MostEdges, testCase: MostEdgesTestCase): Either[String, Double] = {
-    val obtained = solution.findVertexWithMostEdges(testCase.graph)
-    val correct = CorrectMostEdgesSolution.findVertexWithMostEdges(testCase.graph)
+  def gradeOne(solution: MostEdges, testCase: MostEdgesTestCase): Either[String, Double] =
+    for {
+      obtained <- solution.findVertexWithMostEdges(testCase.graph).toRight("Empty solution")
+      correct <- CorrectMostEdgesSolution.findVertexWithMostEdges(testCase.graph).toRight("Empty correct solution")
+    } yield {
+      val obtainedEdgeCount = CorrectMostEdgesSolution.edgeCount(testCase.graph, obtained)
+      val correctEdgeCount = CorrectMostEdgesSolution.edgeCount(testCase.graph, correct)
 
-    val obtainedEdgeCount = CorrectMostEdgesSolution.edgeCount(testCase.graph, obtained)
-    val correctEdgeCount = CorrectMostEdgesSolution.edgeCount(testCase.graph, correct)
-
-    val grade = obtainedEdgeCount.toDouble / correctEdgeCount
-
-    Right(grade)
-  }
+      obtainedEdgeCount.toDouble / correctEdgeCount
+    }
 
   def testCases: List[MostEdgesTestCase] = {
     val cases = List(5, 25, 100, 250, 1000) flatMap { vertexCount =>

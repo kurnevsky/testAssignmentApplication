@@ -7,7 +7,7 @@ object CorrectMostEdgesSolution extends MostEdges {
     }
   }
 
-  override def findVertexWithMostEdges(graph: Set[Edge]): Vertex = {
+  override def findVertexWithMostEdges(graph: Set[Edge]): Option[Vertex] = {
     def add(map: Map[Vertex, Int], vertex: Vertex): Map[Vertex, Int] = {
       map + (vertex -> (map.getOrElse(vertex, 0) + 1))
     }
@@ -20,6 +20,6 @@ object CorrectMostEdgesSolution extends MostEdges {
       count
     }
 
-    vertex
+    Some(vertex)
   }
 }
